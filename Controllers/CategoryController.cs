@@ -1,5 +1,6 @@
 
 using Microsoft.AspNetCore.Mvc;
+using Shop.Models;
 
 [Route("categories")]
 public class CategoryController : ControllerBase
@@ -20,9 +21,9 @@ public class CategoryController : ControllerBase
 
     [HttpPost]
     [Route("")]
-    public string Post()
+    public Category Post([FromBody] Category model)
     {
-        return "POST";
+        return model;
     }
 
     [HttpPut]
