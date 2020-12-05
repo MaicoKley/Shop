@@ -11,12 +11,13 @@ using Shop.Services;
 
 namespace Shop.Controllers
 {
-    [Route("users")]
+    [Route("v1/users")]
     public class UserController : Controller
     {
         [HttpGet]
         [Route("")]
         [Authorize(Roles = "manager")]
+        [ResponseCache(VaryByHeader = "User-Agent", Location = ResponseCacheLocation.Any, Duration = 30)]
         public async Task<ActionResult<List<User>>> Get(
             [FromServices] DataContext context
         )
